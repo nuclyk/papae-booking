@@ -10,14 +10,31 @@
   --platinum: #e0e1ddff;
 }
 
-/* MAIN */
+/* GLOBAL */
+body {
+  color: var(--oxford-blue)
+}
+
+a {
+  text-decoration: none;
+  color: var(--oxford-blue)
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
 img {
   width: 100%;
   display: block;
 }
 
 .active {
-  display: flex!important;
+  display: inline-block !important;
 }
 
 .container {
@@ -28,6 +45,7 @@ img {
 
 .main-content {
   border: 1px solid var(--rich-black);
+  width: 100%;
 }
 
 /* NAVBAR */
@@ -45,12 +63,18 @@ img {
   display: none;
 }
 
+.link-icon {
+  height: 1rem;
+  display: inline-block;
+}
+
 /* APPLICATIONS */
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 576px) {
   .sidebar {
     display: none;
+    width: 100%;
   }
 }
 
