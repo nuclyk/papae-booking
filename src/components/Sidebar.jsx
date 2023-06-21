@@ -15,7 +15,7 @@ const categories = [
     links: [
       {
         id: 1,
-        name: "All Table",
+        name: "All Applications",
         url: "/applications",
         icon: DocumentIcon,
         sort: "all",
@@ -42,8 +42,8 @@ const categories = [
     links: [
       {
         id: 1,
-        name: "All Table",
-        url: "/monk-applications",
+        name: "All Monk Applications",
+        url: "/applications",
         icon: DocumentTextIcon,
       },
     ],
@@ -54,7 +54,7 @@ const Sidebar = () => {
   const { showSidebar } = useGlobalContext();
 
   return (
-    <div className={`sidebar ${showSidebar ? "active" : ""}`}>
+    <div id="sidebar__container" className={`${showSidebar ? "active" : ""}`}>
       {categories.map((cat) => {
         return (
           <ul key={cat.id}>

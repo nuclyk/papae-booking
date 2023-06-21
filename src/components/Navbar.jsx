@@ -5,7 +5,7 @@ const Navbar = () => {
   const { setShowSidebar, showSidebar } = useGlobalContext();
 
   return (
-    <nav className="navbar">
+    <nav id="navbar__container">
       <div>
         <button
           type="button"
@@ -16,7 +16,7 @@ const Navbar = () => {
           ??
         </button>
       </div>
-      <div className="logo">PAPAE</div>
+      <div id="logo">PAPAE</div>
       <div>
         <input type="search" />
       </div>

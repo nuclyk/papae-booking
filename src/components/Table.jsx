@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
-const Table = () => {
+// eslint-disable-next-line react/prop-types
+const Table = ({ data }) => {
   return (
-    <div className="main-content">
+    <div id="applications__container">
       <table>
         <thead>
           <tr>
@@ -16,23 +17,30 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Nero Skipperbottom</td>
-            <td>flexible</td>
-            <td>13/09/2022</td>
-            <td>06/12/2022</td>
-            <td>
-              <Link to="/">Edit</Link>
-            </td>
-            <td>
-              <Link to="/">Delete</Link>
-            </td>
-          </tr>
+          {data.map((app) => {
+            return (
+              <tr key={app.id}>
+                <td>{app.id}</td>
+                <td>
+                  <Link to={`/application/${app.id}`}>
+                    {app.person.first_name} {app.person.last_name}
+                  </Link>
+                </td>
+                <td>{app.retreat}</td>
+                <td>{app.start_date}</td>
+                <td>{app.end_date}</td>
+                <td>
+                  <Link to={`/application/${app.id}/edit`}>Edit</Link>
+                </td>
+                <td>
+                  <Link to={`/application/${app.id}/delete`}>Delete</Link>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
   );
 };
-
 export default Table;

@@ -1,46 +1,46 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
+import { loader as appsLoader } from "./routes/Applications.jsx";
+import { loader as appLoader } from "./routes/ApplicationDetails.jsx";
 import "normalize.css";
 import "./index.css";
-import Applications from "./routes/Applications.jsx";
 import { AppProvider } from "./context.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
+import Applications from "./routes/Applications.jsx";
+import ApplicationDetails from "./routes/ApplicationDetails.jsx";
+import Root from "./routes/Root.jsx";
+import EditApplication from "./routes/EditApplication.jsx";
 
-function Application() {
-  return null;
-}
-
-function MonkApplications() {
-  return null;
-}
-
-function MonkApplication() {
+function DeleteApplication() {
   return null;
 }
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/applications",
         element: <Applications />,
+        loader: appsLoader,
       },
       {
         path: "/application/:id",
-        element: <Application />,
+        element: <ApplicationDetails />,
+        loader: appLoader,
       },
       {
-        path: "/monk-applications",
-        element: <MonkApplications />,
+        path: "/application/:id/edit",
+        element: <EditApplication />,
+        loader: appLoader,
       },
       {
-        path: "/monk-applications/:id",
-        element: <MonkApplication />,
+        path: "/application/:id/delete",
+        element: <DeleteApplication />,
+        loader: appLoader,
       },
     ],
   },
