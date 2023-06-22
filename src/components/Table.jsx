@@ -1,7 +1,28 @@
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context.jsx";
+import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Table = ({ data }) => {
+  const { query } = useGlobalContext();
+
+  const items = data.filter((item) => {
+    const { first_name, last_name, email } = item.person;
+    const q = query.toLowerCase();
+    if (q === "") {
+      return data;
+    } else if (
+      item.id.toString().includes(q) ||
+      first_name.toLowerCase().includes(q) ||
+      last_name.toLowerCase().includes(q) ||
+      email.toLowerCase().includes(q)
+    ) {
+      return data;
+    }
+  });
+
+  console.log(items);
+
   return (
     <div id="applications__container">
       <table>
@@ -17,7 +38,7 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((app) => {
+          {items.map((app) => {
             return (
               <tr key={app.id}>
                 <td>{app.id}</td>
