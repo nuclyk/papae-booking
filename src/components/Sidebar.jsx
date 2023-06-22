@@ -65,7 +65,9 @@ const Sidebar = () => {
                 return (
                   <li key={link.id}>
                     <Icon className="link-icon" />
-                    <Link to={link.url}>{link.name}</Link>
+                    <Link to={`${link.url}?sort=${link.sort}`}>
+                      {link.name}
+                    </Link>
                   </li>
                 );
               })}
